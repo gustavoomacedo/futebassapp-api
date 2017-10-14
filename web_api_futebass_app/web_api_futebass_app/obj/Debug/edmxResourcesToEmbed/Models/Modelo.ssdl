@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdfutebassModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ELENCO">
+    <Key>
+      <PropertyRef Name="ElencoId" />
+    </Key>
+    <Property Name="ElencoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JogadorId" Type="int" Nullable="false" />
+    <Property Name="PartidaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JOGADOR">
+    <Key>
+      <PropertyRef Name="JogadorId" />
+    </Key>
+    <Property Name="JogadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Cidade" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Foto" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Nivel" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="IdSocial" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PARTIDA">
+    <Key>
+      <PropertyRef Name="PartidaId" />
+    </Key>
+    <Property Name="PartidaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JogadorId" Type="int" Nullable="false" />
+    <Property Name="Observacao" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Preco" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Local" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Dia" Type="varchar" MaxLength="100" />
+    <Property Name="Hora" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__ELENCO__JogadorI__5DCAEF64">
+    <End Role="JOGADOR" Type="Self.JOGADOR" Multiplicity="1" />
+    <End Role="ELENCO" Type="Self.ELENCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOGADOR">
+        <PropertyRef Name="JogadorId" />
+      </Principal>
+      <Dependent Role="ELENCO">
+        <PropertyRef Name="JogadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ELENCO__PartidaI__5EBF139D">
+    <End Role="PARTIDA" Type="Self.PARTIDA" Multiplicity="1" />
+    <End Role="ELENCO" Type="Self.ELENCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PARTIDA">
+        <PropertyRef Name="PartidaId" />
+      </Principal>
+      <Dependent Role="ELENCO">
+        <PropertyRef Name="PartidaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PARTIDA__Local__5AEE82B9">
+    <End Role="JOGADOR" Type="Self.JOGADOR" Multiplicity="1" />
+    <End Role="PARTIDA" Type="Self.PARTIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOGADOR">
+        <PropertyRef Name="JogadorId" />
+      </Principal>
+      <Dependent Role="PARTIDA">
+        <PropertyRef Name="JogadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdfutebassModelStoreContainer">
+    <EntitySet Name="ELENCO" EntityType="Self.ELENCO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOGADOR" EntityType="Self.JOGADOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PARTIDA" EntityType="Self.PARTIDA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ELENCO__JogadorI__5DCAEF64" Association="Self.FK__ELENCO__JogadorI__5DCAEF64">
+      <End Role="JOGADOR" EntitySet="JOGADOR" />
+      <End Role="ELENCO" EntitySet="ELENCO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ELENCO__PartidaI__5EBF139D" Association="Self.FK__ELENCO__PartidaI__5EBF139D">
+      <End Role="PARTIDA" EntitySet="PARTIDA" />
+      <End Role="ELENCO" EntitySet="ELENCO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PARTIDA__Local__5AEE82B9" Association="Self.FK__PARTIDA__Local__5AEE82B9">
+      <End Role="JOGADOR" EntitySet="JOGADOR" />
+      <End Role="PARTIDA" EntitySet="PARTIDA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

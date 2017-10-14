@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdfutebassModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ELENCO" EntityType="bdfutebassModel.ELENCO" />
+    <EntitySet Name="JOGADOR" EntityType="bdfutebassModel.JOGADOR" />
+    <AssociationSet Name="FK__ELENCO__JogadorI__5DCAEF64" Association="bdfutebassModel.FK__ELENCO__JogadorI__5DCAEF64">
+      <End Role="JOGADOR" EntitySet="JOGADOR" />
+      <End Role="ELENCO" EntitySet="ELENCO" />
+    </AssociationSet>
+    <EntitySet Name="PARTIDA" EntityType="bdfutebassModel.PARTIDA" />
+    <AssociationSet Name="FK__ELENCO__PartidaI__5EBF139D" Association="bdfutebassModel.FK__ELENCO__PartidaI__5EBF139D">
+      <End Role="PARTIDA" EntitySet="PARTIDA" />
+      <End Role="ELENCO" EntitySet="ELENCO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PARTIDA__Local__5AEE82B9" Association="bdfutebassModel.FK__PARTIDA__Local__5AEE82B9">
+      <End Role="JOGADOR" EntitySet="JOGADOR" />
+      <End Role="PARTIDA" EntitySet="PARTIDA" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ELENCO">
+    <Key>
+      <PropertyRef Name="ElencoId" />
+    </Key>
+    <Property Name="ElencoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JogadorId" Type="Int32" Nullable="false" />
+    <Property Name="PartidaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JOGADOR" Relationship="bdfutebassModel.FK__ELENCO__JogadorI__5DCAEF64" FromRole="ELENCO" ToRole="JOGADOR" />
+    <NavigationProperty Name="PARTIDA" Relationship="bdfutebassModel.FK__ELENCO__PartidaI__5EBF139D" FromRole="ELENCO" ToRole="PARTIDA" />
+  </EntityType>
+  <EntityType Name="JOGADOR">
+    <Key>
+      <PropertyRef Name="JogadorId" />
+    </Key>
+    <Property Name="JogadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Cidade" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Foto" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Nivel" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IdSocial" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ELENCO" Relationship="bdfutebassModel.FK__ELENCO__JogadorI__5DCAEF64" FromRole="JOGADOR" ToRole="ELENCO" />
+    <NavigationProperty Name="PARTIDA" Relationship="bdfutebassModel.FK__PARTIDA__Local__5AEE82B9" FromRole="JOGADOR" ToRole="PARTIDA" />
+  </EntityType>
+  <Association Name="FK__ELENCO__JogadorI__5DCAEF64">
+    <End Type="bdfutebassModel.JOGADOR" Role="JOGADOR" Multiplicity="1" />
+    <End Type="bdfutebassModel.ELENCO" Role="ELENCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOGADOR">
+        <PropertyRef Name="JogadorId" />
+      </Principal>
+      <Dependent Role="ELENCO">
+        <PropertyRef Name="JogadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PARTIDA">
+    <Key>
+      <PropertyRef Name="PartidaId" />
+    </Key>
+    <Property Name="PartidaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JogadorId" Type="Int32" Nullable="false" />
+    <Property Name="Observacao" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Preco" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Local" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Dia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Hora" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ELENCO" Relationship="bdfutebassModel.FK__ELENCO__PartidaI__5EBF139D" FromRole="PARTIDA" ToRole="ELENCO" />
+    <NavigationProperty Name="JOGADOR" Relationship="bdfutebassModel.FK__PARTIDA__Local__5AEE82B9" FromRole="PARTIDA" ToRole="JOGADOR" />
+  </EntityType>
+  <Association Name="FK__ELENCO__PartidaI__5EBF139D">
+    <End Type="bdfutebassModel.PARTIDA" Role="PARTIDA" Multiplicity="1" />
+    <End Type="bdfutebassModel.ELENCO" Role="ELENCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PARTIDA">
+        <PropertyRef Name="PartidaId" />
+      </Principal>
+      <Dependent Role="ELENCO">
+        <PropertyRef Name="PartidaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PARTIDA__Local__5AEE82B9">
+    <End Type="bdfutebassModel.JOGADOR" Role="JOGADOR" Multiplicity="1" />
+    <End Type="bdfutebassModel.PARTIDA" Role="PARTIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOGADOR">
+        <PropertyRef Name="JogadorId" />
+      </Principal>
+      <Dependent Role="PARTIDA">
+        <PropertyRef Name="JogadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

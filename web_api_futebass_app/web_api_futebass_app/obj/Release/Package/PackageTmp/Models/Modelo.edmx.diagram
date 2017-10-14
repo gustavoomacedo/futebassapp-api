@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7237ab56910d4f9f9b203cb53b3cf5d1" Name="Diagram1">
+        <EntityTypeShape EntityType="bdfutebassModel.ELENCO" Width="1.5" PointX="2.125" PointY="4" />
+        <EntityTypeShape EntityType="bdfutebassModel.JOGADOR" Width="1.5" PointX="0.5" PointY="0.625" />
+        <AssociationConnector Association="bdfutebassModel.FK__ELENCO__JogadorI__5DCAEF64" />
+        <EntityTypeShape EntityType="bdfutebassModel.PARTIDA" Width="1.5" PointX="4.5" PointY="0.75" />
+        <AssociationConnector Association="bdfutebassModel.FK__ELENCO__PartidaI__5EBF139D" />
+        <AssociationConnector Association="bdfutebassModel.FK__PARTIDA__Local__5AEE82B9" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

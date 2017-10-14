@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdfutebassModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ELENCO">
+      <EntityTypeMapping TypeName="bdfutebassModel.ELENCO">
+        <MappingFragment StoreEntitySet="ELENCO">
+          <ScalarProperty Name="PartidaId" ColumnName="PartidaId" />
+          <ScalarProperty Name="JogadorId" ColumnName="JogadorId" />
+          <ScalarProperty Name="ElencoId" ColumnName="ElencoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOGADOR">
+      <EntityTypeMapping TypeName="bdfutebassModel.JOGADOR">
+        <MappingFragment StoreEntitySet="JOGADOR">
+          <ScalarProperty Name="IdSocial" ColumnName="IdSocial" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="JogadorId" ColumnName="JogadorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PARTIDA">
+      <EntityTypeMapping TypeName="bdfutebassModel.PARTIDA">
+        <MappingFragment StoreEntitySet="PARTIDA">
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Local" ColumnName="Local" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+          <ScalarProperty Name="JogadorId" ColumnName="JogadorId" />
+          <ScalarProperty Name="PartidaId" ColumnName="PartidaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

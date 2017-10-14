@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/web_api_futebass_app/packages
+/.vs
+/web_api_futebass_app/.vs
